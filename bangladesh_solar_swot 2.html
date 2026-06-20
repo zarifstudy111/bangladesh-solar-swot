@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bangladesh Solar Energy — SWOT Analysis 2025–26</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 32px; }
+    .header .eyebrow {
+      font-size: 11px; letter-spacing: 0.2em; color: #64748b;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .header h1 {
+      font-size: clamp(22px, 4vw, 34px); font-weight: 800;
+      color: #f8fafc; line-height: 1.2;
+    }
+    .header p {
+      color: #94a3b8; font-size: 14px; margin-top: 10px;
+      max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
+
+    /* ── 2×2 Grid ── */
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; max-width: 800px; margin: 0 auto 28px;
+    }
+    .quad-btn {
+      background: #1e2433; border: 2px solid #2d3748;
+      border-radius: 12px; padding: 20px 18px;
+      cursor: pointer; text-align: left;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      color: #e2e8f0;
+    }
+    .quad-btn:hover { border-color: var(--qcolor); }
+    .quad-btn.active { background: var(--qcolor); border-color: var(--qcolor); color: #fff; }
+    .quad-btn .q-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .quad-btn .q-icon { font-size: 20px; color: var(--qcolor); }
+    .quad-btn.active .q-icon { color: #fff; }
+    .quad-btn .q-label { font-weight: 700; font-size: 16px; }
+    .quad-btn .q-count { font-size: 13px; color: #64748b; }
+    .quad-btn.active .q-count { color: rgba(255,255,255,0.8); }
+
+    /* ── Detail Panel ── */
+    .panel {
+      max-width: 800px; margin: 0 auto;
+      background: #1a1f2e; border-radius: 16px;
+      border: 1px solid #2d3748; overflow: hidden;
+      display: none;
+    }
+    .panel.visible { display: block; }
+    .panel-header {
+      padding: 16px 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .panel-header .ph-icon { font-size: 22px; }
+    .panel-header .ph-title { font-weight: 800; font-size: 18px; color: #fff; }
+    .panel-header .ph-sub { font-size: 12px; color: rgba(255,255,255,0.75); }
+
+    /* ── Accordion Items ── */
+    .items { padding: 16px; }
+    .acc-item {
+      margin-bottom: 8px; border-radius: 10px;
+      border: 1px solid #2d3748; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .acc-item.open { border-color: var(--qcolor); }
+    .acc-trigger {
+      width: 100%; background: transparent; border: none;
+      padding: 14px 16px; cursor: pointer;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+      color: #e2e8f0; text-align: left;
+      transition: background 0.2s;
+    }
+    .acc-item.open .acc-trigger { background: color-mix(in srgb, var(--qcolor) 13%, transparent); }
+    .acc-trigger:hover { background: color-mix(in srgb, var(--qcolor) 8%, transparent); }
+    .acc-left { display: flex; align-items: center; gap: 12px; }
+    .acc-num {
+      color: var(--qcolor); font-weight: 700; font-size: 13px;
+      min-width: 24px; flex-shrink: 0;
+    }
+    .acc-title { font-weight: 600; font-size: 14px; }
+    .acc-arrow {
+      color: var(--qcolor); font-size: 18px; flex-shrink: 0;
+      transition: transform 0.2s; display: inline-block;
+    }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body {
+      display: none; padding: 4px 16px 16px 52px;
+      font-size: 14px; line-height: 1.7; color: #94a3b8;
+    }
+    .acc-item.open .acc-body { display: block; }
+
+    /* ── Hint ── */
+    .hint { text-align: center; color: #475569; font-size: 13px; margin-top: 8px; }
+
+    /* ── Summary ── */
+    .summary {
+      max-width: 800px; margin: 28px auto 0;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    }
+    .summary-card {
+      background: #1e2433; border-radius: 10px;
+      padding: 16px; border: 1px solid #2d3748;
+    }
+    .summary-card .sc-label {
+      font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.15em; color: #64748b; margin-bottom: 6px;
+    }
+    .summary-card .sc-text { font-size: 13px; color: #cbd5e1; line-height: 1.6; }
+
+    /* ── Footer ── */
+    .footer { text-align: center; margin-top: 24px; font-size: 11px; color: #334155; }
+
+    @media (max-width: 520px) {
+      .summary { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow">Strategic Intelligence Report · Bangladesh Solar Energy Sector · 2025–26</div>
+    <h1>SWOT Analysis</h1>
+    <p>A deep-dive into the internal and external forces shaping Bangladesh's solar energy trajectory</p>
+  </div>
+
+  <!-- 2×2 Quadrant Grid -->
+  <div class="grid">
+    <button class="quad-btn" style="--qcolor:#16a34a" data-key="strengths" onclick="activate('strengths')">
+      <div class="q-head"><span class="q-icon">◆</span><span class="q-label">Strengths</span></div>
+      <div class="q-count">7 key factors identified</div>
+    </button>
+    <button class="quad-btn" style="--qcolor:#2563eb" data-key="opportunities" onclick="activate('opportunities')">
+      <div class="q-head"><span class="q-icon">▲</span><span class="q-label">Opportunities</span></div>
+      <div class="q-count">8 key factors identified</div>
+    </button>
+    <button class="quad-btn" style="--qcolor:#dc2626" data-key="weaknesses" onclick="activate('weaknesses')">
+      <div class="q-head"><span class="q-icon">▼</span><span class="q-label">Weaknesses</span></div>
+      <div class="q-count">8 key factors identified</div>
+    </button>
+    <button class="quad-btn" style="--qcolor:#d97706" data-key="threats" onclick="activate('threats')">
+      <div class="q-head"><span class="q-icon">◉</span><span class="q-label">Threats</span></div>
+      <div class="q-count">8 key factors identified</div>
+    </button>
+  </div>
+
+  <!-- Detail Panel -->
+  <div class="panel" id="detail-panel">
+    <div class="panel-header" id="panel-header">
+      <span class="ph-icon" id="ph-icon"></span>
+      <div>
+        <div class="ph-title" id="ph-title"></div>
+        <div class="ph-sub" id="ph-sub"></div>
+      </div>
+    </div>
+    <div class="items" id="items-container"></div>
+  </div>
+
+  <div class="hint" id="hint">Select a quadrant above to explore the factors in depth</div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <div class="summary-card">
+      <div class="sc-label">Core verdict</div>
+      <div class="sc-text">Solar's potential is real and enormous — but execution has been systemically undermined by policy conflict, financial distress, and institutional capture.</div>
+    </div>
+    <div class="summary-card">
+      <div class="sc-label">Critical unlock</div>
+      <div class="sc-text">Reconciling the RE Policy 2025 with the IEPMP, operationalising net metering, and deploying floating solar are the three highest-leverage moves available right now.</div>
+    </div>
+  </div>
+
+  <div class="footer">Sources: IEEFA, SREDA, TBS News, Daily Star, ScienceDirect, Harvard Kennedy School · June 2026</div>
+
+<script>
+  const SWOT = {
+    strengths: {
+      label: "Strengths", icon: "◆", color: "#16a34a",
+      items: [
+        { title: "World-record SHS deployment", detail: "Grameen Shakti alone installed 1.8 million Solar Home Systems — the highest by any single organisation globally — proving Bangladesh can execute solar rollouts at massive scale when the model is right." },
+        { title: "Exceptional solar irradiance", detail: "Bangladesh receives 4–6.5 kWh/m²/day of solar radiation year-round. Experts estimate a technical potential of 50,174 MW — enough to meet ~80% of the projected 60,000 MW demand by 2041." },
+        { title: "Vast untapped rooftop surface", detail: "7,000+ RMG factories, hospitals, schools, and railway stations offer enormous rooftop real estate. Textile factories alone could yield 400 MW; other industries add an estimated 5,000 MW more." },
+        { title: "Established microfinance infrastructure", detail: "Through IDCOL and Grameen Bank's credit schemes, Bangladesh already has the financial plumbing to extend installment-based solar financing to low-income households — a globally envied model." },
+        { title: "Rapidly falling solar hardware costs", detail: "A 1 kW rooftop system now costs BDT 70,000–1,70,000. Existing renewable tariffs are already half the cost of electricity from oil-fired plants, making the economics compelling without subsidies." },
+        { title: "99.5% electrification coverage", detail: "Near-total grid connectivity means solar can integrate on top of existing infrastructure rather than building from scratch — a foundational advantage many peers lack." },
+        { title: "Strong international goodwill & climate financing access", detail: "As a frontline climate-vulnerable nation, Bangladesh has privileged access to World Bank, ADB, and Green Climate Fund concessional financing for clean energy projects." }
+      ]
+    },
+    opportunities: {
+      label: "Opportunities", icon: "▲", color: "#2563eb",
+      items: [
+        { title: "Floating solar: 11–22 GW potential", detail: "Bangladesh's vast network of rivers, haor wetlands, and reservoirs offers 11–22 GWp of floating PV potential — bypassing the land scarcity problem entirely. This is the single largest untapped solar opportunity in the country." },
+        { title: "2025 net metering reform opens single-phase households", detail: "For the first time, ordinary single-phase residential consumers can now legally participate in net metering and sell power back to the grid. This unlocks the entire urban middle-class rooftop solar market that was previously locked out." },
+        { title: "National Rooftop Solar Programme 2025 (3,000 MW target)", detail: "The government's new programme deploys solar on public buildings — schools, hospitals, railway stations — under a Build-Own-Operate model where developers finance and own the systems, removing upfront public expenditure as a barrier." },
+        { title: "RMG sector's enormous rooftops + ESG pressure", detail: "Bangladesh's garment industry, which contributes 80% of exports, faces growing ESG pressure from European and American buyers. Rooftop solar directly lowers their carbon footprint and electricity costs simultaneously — a powerful commercial pull that doesn't depend on government policy." },
+        { title: "Regional power trade with India, Bhutan, Nepal", detail: "An existing HVDC interconnection with India already carries 8% of Bangladesh's power. Expanding imports of Himalayan hydropower from Bhutan and Nepal post-2030 could complement domestic solar and cover evening demand gaps." },
+        { title: "Agrivoltaic (dual-use solar + agriculture)", detail: "Elevated solar panels over agricultural land can coexist with crops, protecting them from extreme heat while generating power. This model could dissolve the food-vs-energy land conflict and is being piloted in India and Thailand." },
+        { title: "Bangladesh's LDC graduation creates pressure to decarbonise", detail: "As Bangladesh graduates from Least Developed Country status in November 2026, it will lose concessional trade benefits and face stiffer competition. Cheap domestic renewable energy becomes a direct industrial competitiveness tool." },
+        { title: "Concessional lending window for rooftop solar", detail: "Bangladesh Bank's Climate Risk Funds could open reduced-rate lending specifically for rooftop solar, where banks lend cheaply and the fund covers the interest difference — scaling adoption without burdening either banks or borrowers." }
+      ]
+    },
+    weaknesses: {
+      label: "Weaknesses", icon: "▼", color: "#dc2626",
+      items: [
+        { title: "Net metering was policy-only, not operational", detail: "As of late 2024, ~375 MW of installed rooftop solar in Dhaka alone sat nearly 100% unutilised — the net metering system existed on paper but was not connected to the distribution grid. The 2025 revisions are a promising fix, but implementation is untested." },
+        { title: "Acute land scarcity for utility-scale solar", detail: "Bangladesh is one of the world's most densely populated countries at 1,100 people/km². Agricultural land is politically sacred. Ground-mounted utility solar parks face fierce land acquisition battles, community displacement risks, and broker-driven price inflation near grid substations." },
+        { title: "Grid cannot absorb intermittent renewable power", detail: "The national grid was designed for fossil fuel baseload. Without Battery Energy Storage Systems (BESS) and smart grid upgrades, rapid solar expansion will cause grid instability. The IEPMP 2023 explicitly fails to budget for these storage requirements." },
+        { title: "Critical shortage of skilled EPC companies", detail: "Only 15–20 high-quality Engineering, Procurement and Construction firms operate nationally. At current capacity, achieving 3,000 MW of rooftop solar would require scaling 12× in months — a human capital problem, not a technology one." },
+        { title: "Collusive pricing inflating project costs", detail: "Research shows Bangladesh's actual average Levelised Cost of Energy (LCoE) for solar is 3.87× higher than India's and 1.47× higher than Vietnam's — driven by politically connected firms exploiting opaque procurement processes under the Quick Enhancement of Electricity Act 2010." },
+        { title: "State utility BPDB is financially distressed", detail: "BPDB's payment backlogs to independent power producers crossed BDT 270 billion (USD 2.21 bn) as of November 2025. Bangladesh's sovereign credit rating fell to B2 in late 2024 — reducing the government's capacity to finance or guarantee new energy projects." },
+        { title: "No quality standards for residential solar panels", detail: "The government has not established minimum quality standards for residential rooftop panels, flooding the market with cheap, underperforming imports that damage consumer confidence and inflate long-term maintenance costs." },
+        { title: "Households face roof access restrictions", detail: "Most urban Bangladeshis rent apartments in multi-story buildings. Landlords often restrict rooftop access for individual tenants, making building-level collective adoption legally and practically difficult." }
+      ]
+    },
+    threats: {
+      label: "Threats", icon: "◉", color: "#d97706",
+      items: [
+        { title: "Deep policy conflict between RE Policy and IEPMP", detail: "The Renewable Energy Policy 2025 targets 20% renewables by 2030. The Integrated Energy and Power Master Plan explicitly favours natural gas, LNG, and nuclear — and does not plan the grid upgrades needed for renewable integration. This internal contradiction is the single biggest structural threat to investor confidence." },
+        { title: "Long-term LNG lock-in creating stranded asset risk", detail: "Bangladesh is signing multi-year LNG import deals and building LNG infrastructure worth billions. These create long-term financial liabilities and fossil fuel lock-in that compete directly with renewables for limited fiscal space." },
+        { title: "Climate change threatens solar infrastructure itself", detail: "Cyclones (Amphan 2020 caused nationwide outages), flooding, and rising sea levels directly damage and displace solar installations. Bangladesh is among the world's most climate-vulnerable countries — the same crisis driving solar demand also threatens its physical assets." },
+        { title: "Overcapacity of fossil fuel plants blocking renewables", detail: "Bangladesh's reserve margin already hovers around 61% against peak demand. More than 7,000 MW of new fossil fuel and nuclear baseload is under construction. This overcapacity means BPDB must pay capacity charges to idle plants — leaving little room or incentive to add more renewable capacity." },
+        { title: "Corruption and collusion in procurement", detail: "Politically connected firms exploit opaque procurement to inflate solar project costs. The Quick Enhancement of Electricity Act 2010 has been used to bypass competitive bidding, entrenching corrupt networks that overcharge the state and crowd out legitimate solar developers." },
+        { title: "Discontinuity of energy policies across governments", detail: "Bangladesh has repeatedly missed its own renewable energy targets (5% by 2015, 10% by 2020 — both missed). Each government reshuffle risks reversing or rewriting energy policy, making 20-year private investment decisions extremely risky." },
+        { title: "Foreign currency crisis limiting equipment imports", detail: "Solar panels, inverters, and BESS are imported and priced in USD. Bangladesh's foreign reserves fell sharply post-2022 and the taka depreciated significantly. Import duty waivers that industrial power producers enjoy are not consistently extended to rooftop solar prosumers, making equipment more expensive for households." },
+        { title: "No financing framework mobilised for RE Policy targets", detail: "Achieving the Renewable Energy Policy 2025 targets requires USD 5 billion. As of late 2025, no strategy or funding framework exists to mobilise even the USD 980 million minimum — a gap that renders the targets aspirational rather than actionable." }
+      ]
+    }
+  };
+
+  let currentKey = null;
+
+  function activate(key) {
+    const allBtns = document.querySelectorAll('.quad-btn');
+    const panel = document.getElementById('detail-panel');
+    const hint = document.getElementById('hint');
+
+    if (currentKey === key) {
+      currentKey = null;
+      allBtns.forEach(b => b.classList.remove('active'));
+      panel.classList.remove('visible');
+      hint.style.display = 'block';
+      return;
+    }
+
+    currentKey = key;
+    const q = SWOT[key];
+
+    allBtns.forEach(b => {
+      b.classList.remove('active');
+      if (b.dataset.key === key) b.classList.add('active');
+    });
+
+    panel.style.setProperty('--qcolor', q.color);
+    document.getElementById('panel-header').style.background = q.color;
+    document.getElementById('ph-icon').textContent = q.icon;
+    document.getElementById('ph-title').textContent = q.label;
+    document.getElementById('ph-sub').textContent = q.items.length + ' factors — click each to expand';
+
+    const container = document.getElementById('items-container');
+    container.innerHTML = '';
+    container.style.setProperty('--qcolor', q.color);
+
+    q.items.forEach((item, i) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'acc-item';
+      wrapper.style.setProperty('--qcolor', q.color);
+
+      const trigger = document.createElement('button');
+      trigger.className = 'acc-trigger';
+      trigger.innerHTML = `
+        <div class="acc-left">
+          <span class="acc-num">${String(i + 1).padStart(2, '0')}</span>
+          <span class="acc-title">${item.title}</span>
+        </div>
+        <span class="acc-arrow">↓</span>
+      `;
+      trigger.onclick = () => {
+        const isOpen = wrapper.classList.contains('open');
+        document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
+        if (!isOpen) wrapper.classList.add('open');
+      };
+
+      const body = document.createElement('div');
+      body.className = 'acc-body';
+      body.textContent = item.detail;
+
+      wrapper.appendChild(trigger);
+      wrapper.appendChild(body);
+      container.appendChild(wrapper);
+    });
+
+    panel.classList.add('visible');
+    hint.style.display = 'none';
+
+    if (window.innerWidth < 700) {
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+  }
+</script>
+
+</body>
+</html>
+
